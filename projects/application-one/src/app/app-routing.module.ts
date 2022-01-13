@@ -1,19 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
+import { HomeComponent } from './home/home.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+    {
+        path: 'home',
+        component: HomeComponent
+    },
+    // { path: '**', redirectTo: 'home' }
+];
 
 @NgModule({
     imports: [
         RouterModule.forRoot(routes, {
-            // errorHandler(...arg) {
-            //     console.log('errorHandler', ...arg);
-            // },
-            // // @ts-ignore
-            // malformedUriErrorHandler(...arg) {
-            //     console.log('malformedUriErrorHandler', ...arg);
-            // },
+            errorHandler(...arg) {
+                console.log('errorHandler', ...arg);
+            },
+            // @ts-ignore
+            malformedUriErrorHandler(...arg) {
+                console.log('malformedUriErrorHandler', ...arg);
+            },
         }),
     ],
     exports: [RouterModule],
