@@ -9,8 +9,6 @@ import { addGlobalUncaughtErrorHandler, loadMicroApp, registerMicroApps, start }
 })
 export class App1Component implements OnInit {
 
-    // @ViewChild('container', { static: true })
-    // public container: ElementRef;
     constructor(
         private el: ElementRef
     ) { }

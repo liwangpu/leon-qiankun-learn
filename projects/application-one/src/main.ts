@@ -1,33 +1,34 @@
-import './public-path';
-import { enableProdMode, NgModuleRef } from '@angular/core';
+import { enableProdMode, NgZone } from '@angular/core';
+
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { Router, NavigationStart } from '@angular/router';
+import { ɵAnimationEngine as AnimationEngine } from '@angular/animations/browser';
+
+import { singleSpaAngular, getSingleSpaExtraProviders } from 'single-spa-angular';
+
+
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
+import { singleSpaPropsSubject } from './single-spa/single-spa-props';
 
 if (environment.production) {
   enableProdMode();
 }
 
-let app: void | NgModuleRef<AppModule>;
-async function render() {
-  app = await platformBrowserDynamic()
-    .bootstrapModule(AppModule)
-    .catch((err) => console.error(err));
-}
 if (!(window as any).__POWERED_BY_QIANKUN__) {
-  render();
+  platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .catch(err => console.error(err));
 }
 
-export async function bootstrap(props: Object) {
-  console.log(props);
-}
+const { bootstrap, mount, unmount } = singleSpaAngular({
+  bootstrapFunction: singleSpaProps => {
+    singleSpaPropsSubject.next(singleSpaProps);
+    return platformBrowserDynamic(getSingleSpaExtraProviders()).bootstrapModule(AppModule);
+  },
+  template: '<app1-root />',
+  Router,
+  NgZone,
+});
 
-export async function mount(props: Object) {
-  render();
-}
-
-export async function unmount(props: Object) {
-  console.log(props);
-  // @ts-ignore
-  app.destroy();
-}
+export { bootstrap, mount, unmount };

@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ElementRef, ViewChild } from '@angular/core';
+import { addGlobalUncaughtErrorHandler, loadMicroApp, registerMicroApps, start } from 'qiankun';
+
 
 @Component({
   selector: 'app-app2',
@@ -8,9 +10,16 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class App2Component implements OnInit {
 
-  constructor() { }
+    constructor(
+        private el: ElementRef
+    ) { }
 
-  ngOnInit(): void {
-  }
+    public ngOnInit(): void {
+        loadMicroApp({
+            name: 'app2', // app name registered
+            entry: '//localhost:9003',
+            container: this.el.nativeElement
+        });
+    }
 
 }
