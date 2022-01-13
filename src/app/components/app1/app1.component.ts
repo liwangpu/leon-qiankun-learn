@@ -16,11 +16,11 @@ export class App1Component implements OnInit {
     ) { }
 
     public ngOnInit(): void {
-        // loadMicroApp({
-        //     name: 'app1', // app name registered
-        //     entry: '//localhost:9002',
-        //     container: this.el.nativeElement
-        // });
+        loadMicroApp({
+            name: 'app1', // app name registered
+            entry: '//localhost:9002',
+            container: this.el.nativeElement
+        });
     }
 
 }

@@ -20,11 +20,12 @@ export class MicroappStoreService {
     constructor() { }
 
     public start(): void {
+        const childrenPath = ['/app1', '/app2'];
         registerMicroApps(
             [
                 // {
                 //     name: 'app1', // app name registered
-                //     entry: '//localhost:9002',
+                //     entry: '//localhost:4200',
                 //     container: '#ng-app1-container',
                 //     activeRule: '/app1',
                 // },
