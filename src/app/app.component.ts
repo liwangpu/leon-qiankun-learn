@@ -30,4 +30,8 @@ export class AppComponent implements OnInit {
         this.isCollapsed = !this.isCollapsed;
         localStorage.setItem(menuCollapseStatusKey, `${this.isCollapsed}`);
     }
+
+    public loadApp(appName: string): void {
+
+    }
 }

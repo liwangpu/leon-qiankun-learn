@@ -17,7 +17,8 @@ function genActiveRule(routerPrefix) {
 })
 export class MicroappStoreService {
 
-    constructor() { }
+    public loadedApps = new Set<string>();
+    public constructor() { }
 
     public start(): void {
         const childrenPath = ['/app1', '/app2'];
@@ -25,14 +26,14 @@ export class MicroappStoreService {
             [
                 // {
                 //     name: 'app1', // app name registered
-                //     entry: '//localhost:4200',
-                //     container: '#ng-app1-container',
+                //     entry: '//localhost:9002',
+                //     container: '#subapp-viewport',
                 //     activeRule: '/app1',
                 // },
                 // {
                 //     name: 'app2', // app name registered
                 //     entry: '//localhost:9003',
-                //     container: '#ng-app2-container',
+                //     container: '#subapp-viewport',
                 //     activeRule: '/app2',
                 // }
             ],
@@ -68,4 +69,8 @@ export class MicroappStoreService {
 
         start();
     }
+
+    // public loadApp(appName: string): void {
+
+    // }
 }
