@@ -18,26 +18,30 @@ function genActiveRule(routerPrefix) {
 export class MicroappStoreService {
 
     public loadedApps = new Set<string>();
-    public constructor() { }
+    private subAppViewport: HTMLElement;
+    public constructor(
+    ) { }
 
     public start(): void {
-        const childrenPath = ['/app1', '/app2'];
+        this.subAppViewport = document.getElementById('subapp-viewport');
+        // const childrenPath = ['/app1', '/app2'];
         registerMicroApps(
             [
-                // {
-                //     name: 'app1', // app name registered
-                //     entry: '//localhost:9002',
-                //     container: '#subapp-viewport',
-                //     activeRule: '/app1',
-                // },
-                // {
-                //     name: 'app2', // app name registered
-                //     entry: '//localhost:9003',
-                //     container: '#subapp-viewport',
-                //     activeRule: '/app2',
-                // }
+                {
+                    name: 'app1', // app name registered
+                    entry: '//localhost:9002',
+                    container: '#subapp-viewport',
+                    activeRule: '/app1',
+                },
+                {
+                    name: 'app2', // app name registered
+                    entry: '//localhost:9003',
+                    container: '#subapp-viewport',
+                    activeRule: '/app2',
+                }
             ],
             {
+
                 // qiankun 生命周期钩子 - 加载前
                 beforeLoad: (app: any) => {
                     // 加载子应用前，加载进度条
@@ -50,8 +54,14 @@ export class MicroappStoreService {
                     // 加载子应用前，进度条加载完成
                     //   NProgress.done();
                     console.log('after mount', app.name);
+                    this.toggleViewPortVisible(true);
                     return Promise.resolve();
                 },
+                afterUnmount: (app: any) => {
+                    console.log('after unmount', app?.name);
+                    this.toggleViewPortVisible(false);
+                    return Promise.resolve();
+                }
             },
         );
 
@@ -70,7 +80,11 @@ export class MicroappStoreService {
         start();
     }
 
-    // public loadApp(appName: string): void {
-
-    // }
+    public toggleViewPortVisible(visible: boolean): void {
+        if (visible) {
+            this.subAppViewport.classList.remove('hidden');
+        } else {
+            this.subAppViewport.classList.add('hidden');
+        }
+    }
 }

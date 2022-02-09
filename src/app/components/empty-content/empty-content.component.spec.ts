@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { App1Component } from './app1.component';
+import { EmptyContentComponent } from './empty-content.component';
 
-describe('App1Component', () => {
-  let component: App1Component;
-  let fixture: ComponentFixture<App1Component>;
+describe('EmptyContentComponent', () => {
+  let component: EmptyContentComponent;
+  let fixture: ComponentFixture<EmptyContentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ App1Component ]
+      declarations: [ EmptyContentComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(App1Component);
+    fixture = TestBed.createComponent(EmptyContentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

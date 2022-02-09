@@ -1,0 +1,15 @@
+:host {
+    display: flex;
+    flex-flow: column;
+
+    .navs {
+        display: flex;
+        list-style: none;
+
+        li {
+            display: block;
+            margin-right: 12px;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+:host {
+    display: flex;
+    flex-flow: column;
+
+    div.header {
+        ul {
+            display: flex;
+            user-select: none;
+
+            li {
+                display: block;
+                margin-right: 10px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    div.content {
+        flex: 1;
+    }
+}

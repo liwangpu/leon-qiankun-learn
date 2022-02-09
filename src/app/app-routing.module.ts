@@ -1,14 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { App1Component } from './components/app1/app1.component';
-import { App2Component } from './components/app2/app2.component';
+import { EmptyContentComponent } from './components/empty-content/empty-content.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-    { path: 'home', component: HomeComponent },
-    { path: 'app1', component: App1Component },
-    { path: 'app2', component: App2Component },
-    // { path: '', pathMatch: 'full', redirectTo: 'home' }
+    { path: 'login', component: LoginComponent },
+    {
+        path: '',
+        component: HomeComponent,
+        children: [
+            {
+                path: '**',
+                component: EmptyContentComponent,
+            },
+        ]
+    },
 ];
 
 @NgModule({

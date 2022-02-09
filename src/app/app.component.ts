@@ -1,7 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MicroappStoreService } from './services/microapp-store.service';
-
-const menuCollapseStatusKey = 'menuCollapseStatus';
 
 
 @Component({
@@ -10,28 +8,18 @@ const menuCollapseStatusKey = 'menuCollapseStatus';
     styleUrls: ['./app.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit {
-
-    public isCollapsed = false;
+export class AppComponent implements OnInit, AfterViewInit {
+    
     public constructor(
-        private microStore: MicroappStoreService
+        // private microStore: MicroappStoreService
     ) {
-        const menuCollapseStatusKeyStr = localStorage.getItem(menuCollapseStatusKey);
-        if (menuCollapseStatusKeyStr) {
-            this.isCollapsed = JSON.parse(menuCollapseStatusKeyStr);
-        }
     }
 
     public ngOnInit(): void {
-        this.microStore.start();
     }
 
-    public toggleCollapsed(): void {
-        this.isCollapsed = !this.isCollapsed;
-        localStorage.setItem(menuCollapseStatusKey, `${this.isCollapsed}`);
+    public ngAfterViewInit(): void {
+        // this.microStore.start();
     }
 
-    public loadApp(appName: string): void {
-
-    }
 }
