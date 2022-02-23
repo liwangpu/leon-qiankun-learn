@@ -9,7 +9,9 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "app1": "ng serve application-one",
-        "app2": "ng serve application-two"
+        "app2": "ng serve application-two",
+        "build:app1": "ng build application-one --base-href /app1 --deploy-url /app1/ ",
+        "build:app2": "ng build application-two --base-href /app2 --deploy-url /app2/ "
     },
     "private": true,
     "dependencies": {

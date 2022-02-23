@@ -175,7 +175,7 @@
                 "build": {
                     "builder": "@angular-builders/custom-webpack:browser",
                     "options": {
-                        "outputPath": "dist/application-one",
+                        "outputPath": "image/application-one/dist",
                         "index": "projects/application-one/src/index.html",
                         "main": "projects/application-one/src/main.ts",
                         "polyfills": "projects/application-one/src/polyfills.ts",
@@ -281,7 +281,7 @@
                 "build": {
                     "builder": "@angular-builders/custom-webpack:browser",
                     "options": {
-                        "outputPath": "dist/application-two",
+                        "outputPath": "image/application-tow/dist",
                         "index": "projects/application-two/src/index.html",
                         "main": "projects/application-two/src/main.ts",
                         "polyfills": "projects/application-two/src/polyfills.ts",

@@ -30,6 +30,6 @@ const routes: Routes = [
     ],
     exports: [RouterModule],
     // @ts-ignore
-    providers: [{ provide: APP_BASE_HREF, useValue: window['__POWERED_BY_QIANKUN__'] ? '/app1' : '/' }]
+    // providers: [{ provide: APP_BASE_HREF, useValue: window['__POWERED_BY_QIANKUN__'] ? '/app1' : '/' }]
 })
 export class AppRoutingModule { }

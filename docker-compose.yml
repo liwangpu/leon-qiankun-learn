@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+
+  app1:
+    container_name: app1-c
+    build: ./image/application-one
+    ports:
+      - "9001:80"
+
+  app2:
+    container_name: app2-c
+    build: ./image/application-tow
+    ports:
+      - "9002:80"
+
+  gatewayapp:
+    container_name: gatewayapp-c
+    build: ./image/gatewayapp
+    ports:
+      - "80:80"
